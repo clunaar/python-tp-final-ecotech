@@ -1,49 +1,30 @@
-"""Bloque de prueba del Ejercicio 2.
+# Ejercicio 2 - Bloque de prueba
+from productos import DispositivoEcológico, PanelSolar, StockInvalidoError
+from gestor_inventario import GestorInventario
 
-1. Crea productos válidos (incluido un PanelSolar).
-2. Intenta asignar un stock erróneo y captura StockInvalidoError.
-3. Exporta los productos válidos a catalogo_ecotech.json.
-"""
+# --- PRUEBA ---
+compostera = DispositivoEcológico("Compostera doméstica", 85000, 25)
+panel_1 = PanelSolar("Panel solar 450W", 320000, 40, 450, 21.5)
+panel_2 = PanelSolar("Panel solar 300W", 210000, 12, 300, 18)
 
-from pathlib import Path
+productos_validos = [compostera, panel_1, panel_2]
 
-from dispositivos import DispositivoEcológico, PanelSolar
-from excepciones import StockInvalidoError
-from gestor import GestorInventario
+print("=== Fichas técnicas ===")
+for producto in productos_validos:
+    print(producto.ficha_tecnica())
 
-RUTA_CATALOGO = Path(__file__).parent / "catalogo_ecotech.json"
+print("\n=== Prueba de stock inválido ===")
+try:
+    panel_1.set_stock(-10)
+except StockInvalidoError as error:
+    print(f"Error capturado: {error}")
+print(f"El stock de {panel_1.nombre} sigue en {panel_1.get_stock()}")
 
+try:
+    panel_roto = PanelSolar("Panel defectuoso", 100000, -5, 200, 15)
+except StockInvalidoError as error:
+    print(f"Error capturado: {error}")
 
-def main():
-    catalogo = [
-        DispositivoEcológico("ECO-100", "Compostera doméstica 120 L", 85000, 25),
-        PanelSolar("SOL-450", "Panel solar monocristalino 450 W", 320000, 40, 450, 0.215),
-        PanelSolar("SOL-300", "Panel solar policristalino 300 W", 210000, 12, 300, 0.18),
-    ]
-
-    print("=== Fichas técnicas (polimorfismo) ===")
-    for producto in catalogo:
-        print(producto.ficha_tecnica())
-        print()
-
-    print("=== Validación de stock ===")
-    # Caso 1: un producto que nace con stock negativo no entra al catálogo.
-    try:
-        catalogo.append(PanelSolar("SOL-999", "Panel defectuoso", 100000, -5, 200, 0.15))
-    except StockInvalidoError as error:
-        print(f"✔ Producto rechazado: {error}")
-
-    # Caso 2: asignación errónea sobre un producto existente; el stock no cambia.
-    panel = catalogo[1]
-    try:
-        panel.stock = -10
-    except StockInvalidoError as error:
-        print(f"✔ Asignación rechazada en {panel}: {error}")
-    print(f"  Stock de {panel} sin cambios: {panel.stock} u.")
-
-    ruta = GestorInventario.guardar_catalogo_json(catalogo, RUTA_CATALOGO)
-    print(f"\n✔ {len(catalogo)} productos válidos exportados a {ruta.name}")
-
-
-if __name__ == "__main__":
-    main()
+print("\n=== Exportación ===")
+gestor = GestorInventario()
+gestor.guardar_catalogo_json(productos_validos, "catalogo_ecotech.json")
