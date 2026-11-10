@@ -1,0 +1,27 @@
+[
+    {
+        "tipo": "DispositivoEcológico",
+        "codigo": "ECO-100",
+        "nombre": "Compostera doméstica 120 L",
+        "precio": 85000,
+        "stock": 25
+    },
+    {
+        "tipo": "PanelSolar",
+        "codigo": "SOL-450",
+        "nombre": "Panel solar monocristalino 450 W",
+        "precio": 320000,
+        "stock": 40,
+        "potencia_w": 450,
+        "eficiencia": 0.215
+    },
+    {
+        "tipo": "PanelSolar",
+        "codigo": "SOL-300",
+        "nombre": "Panel solar policristalino 300 W",
+        "precio": 210000,
+        "stock": 12,
+        "potencia_w": 300,
+        "eficiencia": 0.18
+    }
+]

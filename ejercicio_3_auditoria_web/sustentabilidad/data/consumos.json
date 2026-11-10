@@ -1,0 +1,14 @@
+[
+    {"planta": "Planta Norte", "mes": "2026-08", "consumo_kwh": 12450.5},
+    {"planta": "Planta Norte", "mes": "2026-09", "consumo_kwh": 11980.0},
+    {"planta": "Planta Norte", "mes": "2026-10", "consumo_kwh": 12710.3},
+    {"planta": "Planta Sur", "mes": "2026-08", "consumo_kwh": 18320.0},
+    {"planta": "Planta Sur", "mes": "2026-09", "consumo_kwh": 17895.4},
+    {"planta": "Planta Sur", "mes": "2026-10", "consumo_kwh": 19102.8},
+    {"planta": "Centro Logístico", "mes": "2026-08", "consumo_kwh": 6520.0},
+    {"planta": "Centro Logístico", "mes": "2026-09", "consumo_kwh": 6310.7},
+    {"planta": "Centro Logístico", "mes": "2026-10", "consumo_kwh": 6895.2},
+    {"planta": "Laboratorio I+D", "mes": "2026-08", "consumo_kwh": 3105.9},
+    {"planta": "Laboratorio I+D", "mes": "2026-09", "consumo_kwh": 2988.1},
+    {"planta": "Laboratorio I+D", "mes": "2026-10", "consumo_kwh": 3240.0}
+]
